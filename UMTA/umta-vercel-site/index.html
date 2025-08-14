@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Undergraduate Mock Trial Association — University of Windsor</title>
+  <meta name="description" content="UMTA at the University of Windsor — building courtroom advocacy, public speaking, and critical thinking through competitive mock trial." />
+  <meta name="theme-color" content="#0a0a40" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --primary: #0a0a40; /* navy */
+      --accent:  #c3b587; /* gold */
+      --ink: #e9ecf6;     /* near-white text */
+      --muted: #9aa3bf;   /* soft slate */
+      --card: #0f124e;    /* deep navy for cards */
+      --ring: rgba(195,181,135,.45);
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;}
+    body{
+      margin:0; color:var(--ink); background: radial-gradient(1200px 1200px at 80% -10%, rgba(195,181,135,.15), transparent 40%),
+      radial-gradient(800px 800px at 10% -20%, rgba(195,181,135,.12), transparent 45%),
+      linear-gradient(180deg, #0b0c4a 0%, #070833 60%, #050624 100%);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      letter-spacing: .2px;
+    }
+    /* ------ Layout ------ */
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+    .section{padding:96px 0;position:relative}
+    .section h2{font-family:Cinzel, serif; font-weight:700; letter-spacing:.6px; margin:0 0 18px; font-size:clamp(28px, 3.2vw, 40px)}
+    .eyebrow{color:var(--accent); text-transform:uppercase; letter-spacing:3px; font-size:12px; font-weight:700}
+
+    /* ------ Header ------ */
+    header{position:sticky; top:0; z-index:40; backdrop-filter:saturate(180%) blur(10px);
+      background:linear-gradient(180deg, rgba(5,6,36,.88), rgba(5,6,36,.60)); border-bottom:1px solid rgba(195,181,135,.2)}
+    .nav{display:flex; align-items:center; justify-content:space-between; height:70px}
+    .brand{display:flex; align-items:center; gap:14px; text-decoration:none; color:var(--ink)}
+    .brand .crest{width:44px;height:44px;border-radius:999px;display:grid;place-items:center; background:radial-gradient(circle at 35% 35%, rgba(195,181,135,.35), rgba(195,181,135,.12) 50%, transparent 60%), var(--primary); border:1px solid rgba(195,181,135,.35); box-shadow:inset 0 0 0 2px rgba(255,255,255,.02)}
+    .brand .crest svg{width:26px;height:26px}
+    .brand b{font-family:Cinzel, serif; font-size:18px; letter-spacing:1px}
+    nav a{color:var(--ink); text-decoration:none; padding:10px 12px; border-radius:10px; font-weight:600}
+    nav a:hover{background:rgba(195,181,135,.10)}
+    .cta{background:var(--accent); color:#0a0a40; padding:10px 16px; border-radius:12px; font-weight:800; box-shadow:var(--shadow); border:1px solid rgba(0,0,0,.2)}
+    .cta:hover{filter:brightness(1.05)}
+
+    /* ------ Hero ------ */
+    .hero{padding:96px 0 70px; position:relative; overflow:hidden}
+    .hero .grid{display:grid; grid-template-columns: 1.1fr .9fr; gap:36px; align-items:center}
+    .hero h1{font-family:Cinzel, serif; font-weight:800; line-height:1.05; font-size:clamp(34px, 5vw, 56px); margin:0 0 10px}
+    .hero p{color:#cbd3ef; font-size:18px}
+    .hero .actions{display:flex; gap:14px; margin-top:22px; flex-wrap:wrap}
+    .hero .badge{display:inline-flex; align-items:center; gap:10px; padding:8px 12px; border:1px solid rgba(195,181,135,.35); border-radius:999px; background:rgba(195,181,135,.06)}
+    .hero .logo{width:220px; aspect-ratio:1/1; border-radius:22px; border:1px solid rgba(195,181,135,.35); background:rgba(195,181,135,.05); display:grid;place-items:center; box-shadow:var(--shadow)}
+    .hero .logo img{width:78%; height:auto; display:block}
+
+    /* ------ Cards / Utilities ------ */
+    .cards{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .card{background: var(--card); border:1px solid rgba(195,181,135,.22); border-radius:var(--radius); padding:22px; box-shadow: var(--shadow);}
+    .card h3{font-family:Cinzel, serif; margin:0 0 6px; font-size:20px}
+    .card p{margin:0; color:#cdd6fa}
+
+    /* ------ About ------ */
+    .about{display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:start}
+    .about .panel{background: var(--card); border:1px solid rgba(195,181,135,.24); border-radius:var(--radius); padding:20px; box-shadow: var(--shadow);}
+    .about ul{margin:12px 0 0 18px}
+
+    /* ------ Team ------ */
+    .team-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:18px}
+    .person{display:grid; grid-template-columns:96px 1fr; gap:18px; background: var(--card); border:1px solid rgba(195,181,135,.22); border-radius:var(--radius); padding:18px; box-shadow: var(--shadow);}
+    .avatar{width:96px;height:96px;border-radius:16px; display:grid; place-items:center; background:rgba(195,181,135,.06); border:1px solid rgba(195,181,135,.28)}
+    .avatar span{font-weight:800; font-size:26px; color:var(--accent)}
+    .role{color:var(--accent); font-weight:800; letter-spacing:.8px; text-transform:uppercase; font-size:12px}
+
+    /* ------ Events ------ */
+    .events-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:18px}
+    .event{border:1px solid rgba(195,181,135,.22); border-radius:var(--radius); padding:18px; background: var(--card); box-shadow: var(--shadow);}
+    .event h4{margin:0 0 6px; font-size:18px}
+    .event .when{color:var(--muted); font-size:14px}
+
+    /* ------ Contact / Footer ------ */
+    .contact-card{display:grid; grid-template-columns: 1fr 1fr; gap:20px}
+    form{display:grid; gap:12px}
+    input, textarea{background:#0b0d44; color:var(--ink); border:1px solid rgba(195,181,135,.25); border-radius:12px; padding:12px 14px; font:inherit}
+    input:focus, textarea:focus{outline:none; box-shadow:0 0 0 4px var(--ring)}
+    button{all:unset; display:inline-block; padding:12px 16px; background:var(--accent); color:#0a0a40; border-radius:12px; font-weight:800; cursor:pointer; border:1px solid rgba(0,0,0,.2)}
+    button:hover{filter:brightness(1.07)}
+
+    footer{border-top:1px solid rgba(195,181,135,.22); padding:24px 0 70px; color:#c7cce9; text-align:center}
+
+    /* ------ Helpers ------ */
+    .fade-in{opacity:0; transform:translateY(10px); transition:.7s ease}
+    .fade-in.show{opacity:1; transform:none}
+
+    /* ------ Responsive ------ */
+    @media (max-width: 980px){
+      .hero .grid{grid-template-columns:1fr}
+      .about{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr}
+      .team-grid{grid-template-columns:1fr}
+      .events-grid{grid-template-columns:1fr}
+      .contact-card{grid-template-columns:1fr}
+    }
+    /* --- Section background unification to prevent banding behind headings --- */
+    .section{scroll-margin-top:90px}
+    .section::before{content:""; position:absolute; inset:0; background:#070833; opacity:1}
+    .section > .container{position:relative; z-index:1}
+  /* Global link style (avoid default blue) */
+    a{ color: var(--accent); text-decoration:none }
+    a:hover{ text-decoration:underline; text-decoration-color: rgba(195,181,135,.6) }
+    /* Social icons */
+    .social{ display:flex; gap:12px; align-items:center }
+    .social .icon{ width:40px; height:40px; border-radius:999px; display:grid; place-items:center; border:1px solid rgba(195,181,135,.35); background:rgba(195,181,135,.06); color: var(--accent) }
+    .social .icon:hover{ background:rgba(195,181,135,.12) }
+    .social .icon svg{ width:20px; height:20px; stroke:var(--accent); fill:none; stroke-width:1.8 }
+</style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="UMTA home">
+        <div class="crest" aria-hidden="true">
+          <!-- Minimal inline mark -->
+          <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Scales of justice">
+            <path d="M12 4v11m0-9c4 0 4 6 4 6H8s0-6 4-6Z" fill="none"/>
+            <path d="M6 14c1.2 0 2.2-.8 2.5-2H3.5c.3 1.2 1.3 2 2.5 2Zm12 0c1.2 0 2.2-.8 2.5-2h-5c.3 1.2 1.3 2 2.5 2Z"/>
+            <path d="M7 8l5-3 5 3M12 15l-2 4h4l-2-4Z"/>
+          </svg>
+        </div>
+        <b>UMTA</b>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#about">About</a>
+        <a href="#highlights">Highlights</a>
+        <a href="#team">Team</a>
+        <a href="#events">Events</a>
+        <a href="#contact">Contact</a>
+        <a class="cta" href="#apply">Apply</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="home" class="hero">
+    <div class="container grid">
+      <div>
+        <span class="eyebrow">University of Windsor</span>
+        <h1>Undergraduate Mock Trial Association</h1>
+        <p>Building courtroom advocacy, public speaking, and critical thinking through competitive mock trial. Join a nationally recognized team and sharpen the skills that set future litigators apart.</p>
+        <div class="actions">
+          <a class="cta" href="#apply">Apply to join</a>
+          <div class="social" aria-label="UMTA social media">
+            <a class="icon" href="https://www.instagram.com/uwinmocktrial?utm_source=ig_web_button_share_sheet&amp;igsh=MTA0eTN5YjE0anYzYw==" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.3"/></svg>
+            </a>
+            <a class="icon icon--li" href="https://www.linkedin.com/company/undergraduate-mock-trial-association/?viewAsMember=true" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" role="img">
+                <rect x="3" y="3" width="18" height="18" rx="5"/>
+                <circle cx="8" cy="8" r="1"/>
+                <line x1="8" y1="10" x2="8" y2="16"/>
+                <path d="M12 16v-4a2 2 0 0 1 4 0v4"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="cards" style="margin-top:22px">
+          <div class="card"><h3>Founded</h3><p>2016</p></div>
+          <div class="card"><h3>Mission</h3><p>Experiential learning through real-trial simulation.</p></div>
+          <div class="card"><h3>Where we compete</h3><p>Tournaments across Canada.</p></div>
+        </div>
+      </div>
+      <div class="logo">
+        <!-- Swap this placeholder with your official primary logo if desired -->
+        <!-- Example: <img src="umta-logo.png" alt="UMTA crest"> -->
+        <img alt="UMTA crest" src="data:images/UMTAPrimaryLogo,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 256 256'%3E%3Crect width='256' height='256' rx='28' fill='%230a0a40'/%3E%3Ccircle cx='128' cy='128' r='100' fill='none' stroke='%23c3b587' stroke-width='8'/%3E%3Ctext x='128' y='150' text-anchor='middle' font-family='Cinzel, serif' font-size='84' fill='%23c3b587'%3E⚖%3C/text%3E%3C/svg%3E"/>
+      </div>
+    </div>
+  </main>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="container about">
+      <div>
+        <span class="eyebrow">About</span>
+        <h2>Who we are</h2>
+        <p>Founded in 2016, the Undergraduate Mock Trial Association (UMTA) at the University of Windsor is a student‑run organization dedicated to developing legal advocacy, public speaking, and critical thinking skills through competitive mock trial. Since its inception, UMTA has grown from a small group of aspiring legal minds to a nationally recognized team, competing in tournaments across Canada against top‑tier universities.</p>
+        <p>With a strong emphasis on collaboration, professionalism, and experiential learning, UMTA provides students with an unmatched opportunity to simulate real courtroom trials and prepare for future careers in law and beyond.</p>
+      </div>
+      <aside class="panel">
+        <h3 style="font-family:Cinzel,serif;margin-top:0">What you’ll learn</h3>
+        <ul>
+          <li>Direct & cross‑examination, objections, and evidentiary rules</li>
+          <li>Case theory, strategy, and written advocacy</li>
+          <li>Teamwork, professionalism, and public speaking</li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Highlights -->
+  <section id="highlights" class="section">
+    <div class="container">
+      <span class="eyebrow">Highlights</span>
+      <h2>Recent Successes</h2>
+      <div class="cards">
+        <div class="card"><h3>2025</h3><p>UWaterloo Black & Gold Invitational — <b>Champions</b></p></div>
+        <div class="card"><h3>2025</h3><p>Western University Invitational — <b>Finalists</b></p></div>
+        <div class="card"><h3>2025</h3><p>Lloyd Dean Moot — <b>Winners</b>: Matthew Livingstone &amp; Joseph Murtagh</p></div>
+      </div>
+      <div class="card" style="margin-top:18px">
+        <p style="margin:0">Lloyd Dean Moot — <b>Finalists</b>: Natalija Crvenkovski &amp; Gabriela Duarte Meo</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section id="team" class="section">
+    <div class="container">
+      <span class="eyebrow">Leadership</span>
+      <h2>Executive Team</h2>
+      <div class="team-grid">
+        <article class="person fade-in">
+          <div class="avatar" aria-hidden="true"><span>NC</span></div>
+          <div>
+            <div class="role">President</div>
+            <h3 style="margin:.2rem 0 .4rem">Natalija Crvenkovski</h3>
+            <p>Natalija Crvenkovski is the President of the University of Windsor's Undergraduate Mock Trial Association for the 2024–2025 and 2025–2026 academic years. She is a fourth‑year honours philosophy student who enjoys studying the intersections of law and philosophy, with a particular interest in AI ethics and governance. Through her role as President, she is committed to building a team culture grounded in intellectual curiosity, collaboration, and a passion for justice.</p>
+          </div>
+        </article>
+
+        <article class="person fade-in">
+          <div class="avatar" aria-hidden="true"><span>ML</span></div>
+          <div>
+            <div class="role">Vice‑President</div>
+            <h3 style="margin:.2rem 0 .4rem">Matthew Livingstone</h3>
+            <p>Matthew Livingstone is a second‑year undergraduate student with aspirations of earning a law degree to pursue a career in public policy. He has held his position with us as Vice‑President for the past year, and competes nationally in moot/mock trials. In addition to his work with UMTA, Matthew is a member of the university’s debate team, where he has competed in intercollegiate tournaments for the past eight months. He previously completed a co‑op placement at the Crown Attorney’s Office, and he now serves as the Head of Compliance &amp; Special Situations at the John Simpson Odette Student Investment Fund.</p>
+          </div>
+        </article>
+
+        <article class="person fade-in">
+          <div class="avatar" aria-hidden="true"><span>MM</span></div>
+          <div>
+            <div class="role">Vice‑President</div>
+            <h3 style="margin:.2rem 0 .4rem">Madeline McCallum</h3>
+            <p>Madeline McCallum is a third‑year Political Science student at the University of Windsor. She serves as Vice President of the University of Windsor Mock Trial Association and has competed in multiple tournaments, contributing to case strategy and team preparation. She is also a former member of the University of Windsor varsity basketball team. Madeline currently works as a legal assistant and aspires to become a lawyer advocating for effective crime control on behalf of Canada.</p>
+          </div>
+        </article>
+
+        <article class="person fade-in">
+          <div class="avatar" aria-hidden="true"><span>JM</span></div>
+          <div>
+            <div class="role">VP, Finance &amp; Operations</div>
+            <h3 style="margin:.2rem 0 .4rem">Joseph Murtagh</h3>
+            <p>Joseph Murtagh is an undergraduate student at the University of Windsor, pursuing a combined Bachelor of Commerce and Computer Science degree. He is actively involved in the university's mock trial program and was part of the team that secured first place at the 2025 Black &amp; Gold Invitational Mock Trial Tournament hosted by the University of Waterloo. Joseph also serves as a member of the John Simpson Odette Student Investment Fund, contributing to the fund's operations and investment strategies. He aspires to pursue a legal degree and work in legislation.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+    
+
+  <!-- Events -->
+  <section id="events" class="section">
+    <div class="container">
+      <span class="eyebrow">What’s next</span>
+      <h2>Upcoming Events</h2>
+      <div class="events-grid">
+        <div class="event fade-in">
+          <h4>Criminal Law Moot</h4>
+          <div class="when">Case TBA — Date TBS</div>
+          <p>Our flagship moot featuring case theory, submission writing, and oral advocacy.</p>
+        </div>
+        <div class="event fade-in">
+          <h4>Criminal Mock Trial</h4>
+          <div class="when">Case TBA — Date TBS</div>
+          <p>Full trial simulation with openings, examinations, objections, and closings.</p>
+        </div>
+        <div class="event fade-in">
+          <h4>Corporate Law Moot</h4>
+          <div class="when">Case TBA — Date TBS</div>
+          <p>Explore the business‑law toolbox: mergers, fiduciary duties, and remedies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Apply -->
+  <section id="apply" class="section">
+    <div class="container">
+      <span class="eyebrow">Join the team</span>
+      <h2>Apply to UMTA</h2>
+      <div class="card" style="display:grid; grid-template-columns: 1fr auto; gap:18px; align-items:center">
+        <p style="margin:0">Applications open periodically throughout the year. Use the button to view the most recent application form. If applications are closed, follow us on Instagram for the next intake or email us with your interest.</p>
+        <a class="cta" href="https://docs.google.com/forms/d/e/1FAIpQLSc-FsaWJ_zOGuIUvZyRXGB22FxA33xigO5-HViY4kETdYDIDg/viewform" target="_blank" rel="noopener">Open Application</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="container contact-card">
+      <div class="card">
+        <span class="eyebrow">Get in touch</span>
+        <h2 style="margin-top:6px">Contact</h2>
+        <p style="margin-top:0">Have questions about joining, tournaments, or partnerships? We’d love to hear from you.</p>
+        <p style="margin:.4rem 0 0"><b>Email</b>: <a href="mailto:umta@uwindsor.ca" style="color:var(--accent); font-weight:700">umta@uwindsor.ca</a></p>
+        <p style="margin:.4rem 0 0"><b>Instagram</b>: <a href="https://www.instagram.com/uwinmocktrial?utm_source=ig_web_button_share_sheet&amp;igsh=MTA0eTN5YjE0anYzYw==" target="_blank" rel="noopener">@uwinmocktrial</a></p>
+        <p style="margin:.2rem 0 0"><b>LinkedIn</b>: <a href="https://www.linkedin.com/company/undergraduate-mock-trial-association/?viewAsMember=true" target="_blank" rel="noopener">Undergraduate Mock Trial Association</a></p>
+      </div>
+      <div class="card">
+        <span class="eyebrow">Quick note</span>
+        <h2 style="margin-top:6px">Send a message</h2>
+        <form action="mailto:umta@uwindsor.ca" method="post" enctype="text/plain">
+          <input required name="name" placeholder="Your name" />
+          <input required name="email" placeholder="Email" type="email" />
+          <textarea name="message" rows="5" placeholder="How can we help?"></textarea>
+          <button type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:10px">
+        <div class="brand" style="gap:8px; text-decoration:none; color:inherit">
+          <div class="crest" aria-hidden="true" style="width:32px;height:32px"><svg viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11m0-9c4 0 4 6 4 6H8s0-6 4-6Z"/><path d="M6 14c1.2 0 2.2-.8 2.5-2H3.5c.3 1.2 1.3 2 2.5 2Z"/><path d="M7 8l5-3 5 3M12 15l-2 4h4l-2-4Z"/></svg></div>
+          <b>UMTA</b>
+        </div>
+      </div>
+      <div class="social" style="justify-content:center; margin-bottom:8px">
+        <a class="icon" href="https://www.instagram.com/uwinmocktrial?utm_source=ig_web_button_share_sheet&amp;igsh=MTA0eTN5YjE0anYzYw==" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.3"/></svg>
+        </a>
+        <a class="icon icon--li" href="https://www.linkedin.com/company/undergraduate-mock-trial-association/?viewAsMember=true" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true" role="img">
+                <rect x="3" y="3" width="18" height="18" rx="5"/>
+                <circle cx="8" cy="8" r="1"/>
+                <line x1="8" y1="10" x2="8" y2="16"/>
+                <path d="M12 16v-4a2 2 0 0 1 4 0v4"/>
+              </svg>
+            </a>
+      </div>
+      <small>© <span id="year"></span> Undergraduate Mock Trial Association — University of Windsor</small>
+    </div>
+  </footer>
+
+  <script>
+    // reveal on scroll
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); })
+    }, {threshold:.2});
+    document.querySelectorAll('.fade-in').forEach(el=>observer.observe(el));
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
