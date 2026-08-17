@@ -1,37 +1,45 @@
-# UMTA Static Site (Vercel-ready)
+# UMTA — Undergraduate Mock Trial Association
 
-This repository hosts the Undergraduate Mock Trial Association website as a single static page.
+The website for the Undergraduate Mock Trial Association at the University of Windsor, served at [umta.ca](https://umta.ca).
 
-## Deploy on Vercel (Git flow)
+## What this is
 
-1. Create a new repository:
-   ```bash
-   git init
-   git add .
-   git commit -m "initial commit: static site"
-   ```
-2. Create a repo on GitHub/GitLab/Bitbucket and add it as the remote:
-   ```bash
-   git remote add origin https://github.com/YOUR_USERNAME/umta-site.git
-   git push -u origin main
-   ```
-3. Go to https://vercel.com > **Add New Project** > **Import Git Repository** > pick your repo.
-4. Framework preset: **Other** (no framework). Build command: **None**. Output directory: **/** (root).
-5. Click **Deploy**.
+A static, multi-page site. Plain HTML, one shared stylesheet, and a small JavaScript file for the mobile menu and scroll animations. There is **no build step** and no dependencies — Vercel serves the files exactly as they are.
 
-## Deploy on Vercel (CLI)
+## Pages
 
-```bash
-npm i -g vercel
-vercel  # follow the prompts; when asked for framework, choose “Other” and output dir “/”
+| File | Purpose |
+| --- | --- |
+| `index.html` | Home: seal, partners, season stats, highlights, about |
+| `competitions.html` | In-house competitions, out-of-town results, community events |
+| `white-papers.html` | Legal papers written by members |
+| `resources.html` | Competition final recordings and how-to-moot guides |
+| `team.html` | Executive team |
+| `join.html` | Applications and contact |
+
+## Shared files
+
+- `styles.css` — the entire design system. Colours and spacing are CSS variables defined in `:root` at the top.
+- `script.js` — mobile nav toggle, scroll reveal, footer year.
+- `images/` — photos and logos.
+
+Every page carries its own copy of the header, footer, and announcement bar. If you change one, change all six.
+
+## Working on it locally
+
+No install needed. Open `index.html` in a browser, or serve the folder:
+
+```
+python -m http.server 5620
 ```
 
-## Project structure
+Then visit `http://localhost:5620`.
 
-```
-.
-├─ index.html       # your site (inline CSS/JS; no build step required)
-└─ vercel.json      # minimal config (optional)
-```
+## Deploying
 
-> Contact form uses `mailto:`; it opens the visitor's email client instead of sending from the site.
+Pushing to the production branch triggers an automatic Vercel deployment to umta.ca. Pushing to any other branch produces a preview URL without touching the live site.
+
+## Notes
+
+- Image paths are lowercase `images/`. Vercel serves from Linux, where filename case matters, so keep references exact.
+- Partner logos (WizePrep, Red Bull) are used to credit real sponsors. If either sends an official asset pack, swap the files in `images/` rather than editing the markup.
