@@ -334,57 +334,95 @@ footer.site{
   .page-hero p{margin-left:auto; margin-right:auto}
 }
 
-/* ---------- Tournament calendar ---------- */
+/* ---------- Tournament calendar ----------
+   Flat, square-cornered cards: host logo leads on the left,
+   the date sits in its own column on the right. */
 .cal-group{margin-bottom:46px}
 .cal-group > h3{
   font-size:14px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold);
   font-family:Manrope, sans-serif; font-weight:800; margin:0 0 16px;
-  padding-bottom:10px; border-bottom:1px solid var(--line);
+  padding-bottom:10px; border-bottom:2px solid var(--navy);
 }
-.cal-list{display:grid; gap:16px}
+.cal-list{display:grid; gap:14px}
 .cal-item{
-  display:grid; grid-template-columns:104px 1fr 170px; gap:24px; align-items:center;
-  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
-  padding:22px 26px; box-shadow:var(--shadow);
-  transition:transform .15s ease, box-shadow .15s ease;
+  display:grid; grid-template-columns:210px minmax(0,1fr) 200px;
+  grid-template-rows:1fr auto;
+  grid-template-areas:"logo body date" "logo body action";
+  background:var(--paper); border:1px solid var(--line); border-radius:0;
 }
-.cal-item:hover{transform:translateY(-2px); box-shadow:var(--shadow-lg)}
-.cal-date{
-  background:linear-gradient(135deg, var(--navy), var(--navy-2)); color:#fff;
-  border-radius:14px; text-align:center; padding:12px 8px; border:2px solid var(--gold-2);
+.cal-logo{
+  grid-area:logo; display:flex; align-items:center; justify-content:center;
+  padding:26px 22px; border-right:1px solid var(--line);
 }
-.cal-date .mon{display:block; font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-2); font-weight:800}
-.cal-date .day{display:block; font-family:Fraunces, serif; font-size:26px; font-weight:600; line-height:1.15}
-.cal-date .yr{display:block; font-size:11.5px; color:rgba(243,239,227,.72); font-weight:600}
-.cal-date.tba{background:var(--gold-soft); border-color:var(--gold-2)}
-.cal-date.tba .mon{color:var(--gold)}
-.cal-date.tba .day{color:var(--navy); font-size:19px}
-.cal-date.tba .yr{color:var(--muted)}
-.cal-body h4{font-size:21px; margin:0 0 5px; font-weight:600}
-.cal-body .host{color:var(--muted); font-size:14.5px; margin:0 0 9px}
-.cal-body .note{color:var(--muted); font-size:14px; margin:9px 0 0}
-.cal-tags .badge{font-size:11px; padding:4px 11px; margin:0 6px 0 0}
-.cal-action{text-align:right}
-.cal-action .cta{padding:10px 18px; font-size:14.5px; width:100%; text-align:center}
-.cal-action .email{
-  display:block; font-size:13.5px; color:var(--muted); margin-top:9px; word-break:break-word;
+.cal-logo img{width:auto; height:auto; max-width:160px; max-height:84px; object-fit:contain}
+.cal-wordmark{
+  font-family:Manrope, sans-serif; font-weight:800; font-size:24px; color:var(--navy);
+  text-transform:uppercase; letter-spacing:.06em; text-align:center; line-height:1.1;
 }
+.cal-wordmark small{display:block; margin-top:6px; font-size:10.5px; letter-spacing:.12em; color:var(--muted); font-weight:700}
+
+.cal-body{grid-area:body; padding:24px 28px; align-self:center}
+.cal-body h4{
+  font-family:Manrope, sans-serif; font-variation-settings:normal;
+  font-size:21px; font-weight:800; letter-spacing:-.01em; line-height:1.25; margin:0 0 4px;
+}
+.cal-body .host{color:var(--muted); font-size:14.5px; margin:0 0 8px}
+.cal-meta{margin:0; font-size:13.5px; color:var(--muted)}
+.cal-meta b{color:var(--navy); font-weight:800}
+.cal-body .note{color:var(--muted); font-size:14px; margin:10px 0 0}
+
+.cal-date{grid-area:date; padding:24px 24px 12px; border-left:1px solid var(--line)}
+.cal-date .flag{
+  display:block; font-size:12px; font-weight:800; color:var(--navy);
+  border-left:3px solid var(--gold-2); padding-left:8px; margin-bottom:10px;
+}
+.cal-date .lbl{display:block; font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase; color:var(--gold)}
+.cal-date .day{display:block; font-size:32px; font-weight:800; color:var(--navy); line-height:1.1; letter-spacing:-.02em; margin-top:2px}
+.cal-date .sub{display:block; font-size:13px; font-weight:600; color:var(--muted); margin-top:2px}
+.cal-date.tba .day{font-size:28px}
+
+.cal-action{grid-area:action; padding:0 24px 24px; border-left:1px solid var(--line)}
+.cal-action .cta{
+  display:block; width:100%; text-align:center; padding:10px 14px; font-size:14px;
+  border-radius:0; box-shadow:none;
+}
+.cal-action .cta:hover{transform:none; box-shadow:none}
+.cal-action .email{display:block; font-size:13px; color:var(--muted); margin-top:8px}
 .cal-action .email a{color:var(--navy); font-weight:700}
-.cal-soon{
-  display:inline-block; background:var(--navy); color:var(--gold-2); font-size:10.5px;
-  font-weight:800; letter-spacing:.14em; text-transform:uppercase; border-radius:999px;
-  padding:4px 11px; margin-bottom:8px;
-}
+
 .cal-intro{
   background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--gold-2);
-  border-radius:0 14px 14px 0; padding:20px 24px; margin-bottom:40px; box-shadow:var(--shadow);
+  border-radius:0; padding:20px 24px; margin-bottom:40px;
 }
 .cal-intro p{margin:0; color:var(--muted); font-size:15px}
 .cal-intro p + p{margin-top:9px}
 
+.cta-banner.cal-banner{border-radius:0; box-shadow:none}
+.cta-banner.cal-banner::after{display:none}
+.cta-banner.cal-banner .cta{border-radius:0; box-shadow:none}
+
 @media (max-width: 1020px){
-  .cal-item{grid-template-columns:84px 1fr; gap:18px; padding:20px}
-  .cal-action{grid-column:1 / -1; text-align:left; margin-top:4px}
-  .cal-action .cta{width:auto}
-  .cal-date .day{font-size:22px}
+  .cal-item{grid-template-columns:170px minmax(0,1fr) 180px}
+  .cal-logo{padding:22px 18px}
+  .cal-logo img{max-width:132px; max-height:72px}
+  .cal-body{padding:22px 22px}
+  .cal-date{padding:22px 20px 10px}
+  .cal-action{padding:0 20px 22px}
+}
+@media (max-width: 720px){
+  .cal-item{
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    grid-template-rows:auto;
+    grid-template-areas:"logo date" "body body" "action action";
+  }
+  .cal-logo{padding:18px; border-bottom:1px solid var(--line)}
+  .cal-logo img{max-width:100%; max-height:64px}
+  .cal-wordmark{font-size:19px}
+  .cal-date{padding:18px; border-bottom:1px solid var(--line); align-self:stretch; display:flex; flex-direction:column; justify-content:center}
+  .cal-date .day{font-size:28px}
+  .cal-date.tba .day{font-size:24px}
+  .cal-body{padding:18px 18px 14px}
+  .cal-body h4{font-size:19px}
+  .cal-action{padding:0 18px 18px; border-left:0}
+  .cal-action .cta{display:inline-block; width:auto; padding:10px 18px}
 }
