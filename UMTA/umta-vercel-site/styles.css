@@ -18,8 +18,8 @@
   --line: rgba(10,10,64,.12);
   --shadow: none;            /* flat cards: borders, not drop shadows */
   --shadow-lg: none;
-  --radius: 0;               /* square corners site-wide */
-  --radius-sm: 0;
+  --radius: 10px;            /* cards: gently eased corners, never pills */
+  --radius-sm: 6px;          /* buttons, thumbnails, portraits */
 }
 
 *{box-sizing:border-box}
@@ -95,7 +95,7 @@ header.site{
 .nav-links a.cta:hover{color:#fff; background:var(--navy-2)}
 
 .cta{
-  background:var(--navy); color:#fff; padding:12px 20px; border-radius:0;
+  background:var(--navy); color:#fff; padding:12px 20px; border-radius:var(--radius-sm);
   font-weight:800; display:inline-block; border:2px solid var(--navy);
   transition:background .15s ease, color .15s ease;
 }
@@ -107,7 +107,7 @@ header.site{
 .band-navy .cta.ghost{color:#fff; border-color:rgba(255,255,255,.55)}
 .band-navy .cta.ghost:hover{background:#fff; color:var(--navy); border-color:#fff}
 
-.menu-btn{display:none; background:none; border:1px solid var(--line); border-radius:0; color:var(--navy); font-size:22px; padding:4px 12px; cursor:pointer}
+.menu-btn{display:none; background:none; border:1px solid var(--line); border-radius:var(--radius-sm); color:var(--navy); font-size:22px; padding:4px 12px; cursor:pointer}
 
 /* ---------- Page hero (inner pages) ---------- */
 .page-hero{padding-top:72px; padding-bottom:16px}
@@ -149,7 +149,7 @@ header.site{
 /* ---------- Partner band ---------- */
 .partners .card{display:grid; grid-template-columns:170px 1fr; gap:26px; align-items:center; padding:28px}
 .logo-chip{
-  background:var(--cream); border-radius:0; padding:18px; display:grid; place-items:center;
+  background:var(--cream); border-radius:var(--radius-sm); padding:18px; display:grid; place-items:center;
   min-height:120px; border:1px solid var(--line);
 }
 .logo-chip img{max-height:80px; width:auto; max-width:100%; object-fit:contain}
@@ -195,7 +195,7 @@ header.site{
 .badge + .badge::before{content:"\00b7"; margin:0 9px; color:var(--muted)}
 .prize-note{
   margin-top:18px; padding:14px 16px; border-left:3px solid var(--gold-2);
-  background:var(--cream); border-radius:0; font-size:14.5px; color:var(--ink);
+  background:var(--cream); border-radius:0 var(--radius-sm) var(--radius-sm) 0; font-size:14.5px; color:var(--ink);
 }
 
 /* ---------- Team ---------- */
@@ -206,7 +206,7 @@ header.site{
   padding:24px; box-shadow:var(--shadow);
 }
 .avatar{
-  width:96px; height:96px; border-radius:0; display:grid; place-items:center;
+  width:96px; height:96px; border-radius:var(--radius-sm); display:grid; place-items:center;
   background:var(--navy); border:2px solid var(--gold-2);
   overflow:hidden; flex-shrink:0;
 }
@@ -220,7 +220,7 @@ header.site{
 .resource-card{position:relative; overflow:hidden; transition:border-color .18s ease}
 .resource-card:hover{border-color:var(--navy)}
 .resource-card .thumb{
-  aspect-ratio:16/9; border-radius:0; margin-bottom:16px;
+  aspect-ratio:16/9; border-radius:var(--radius-sm); margin-bottom:16px;
   background:linear-gradient(135deg, var(--navy), var(--navy-2));
   display:grid; place-items:center; color:var(--gold-2);
 }
@@ -281,7 +281,7 @@ footer.site{
 
 .social{display:flex; gap:12px; align-items:center}
 .social .icon{
-  width:42px; height:42px; border-radius:0; display:grid; place-items:center;
+  width:42px; height:42px; border-radius:var(--radius-sm); display:grid; place-items:center;
   border:2px solid var(--navy); background:transparent; color:var(--navy);
   transition:background .15s ease;
 }
@@ -346,7 +346,7 @@ footer.site{
   display:grid; grid-template-columns:210px minmax(0,1fr) 200px;
   grid-template-rows:1fr auto;
   grid-template-areas:"logo body date" "logo body action";
-  background:var(--paper); border:1px solid var(--line);
+  background:var(--paper); border:1px solid var(--line); border-radius:var(--radius);
 }
 .cal-logo{
   grid-area:logo; display:flex; align-items:center; justify-content:center;
@@ -388,7 +388,7 @@ footer.site{
 
 .cal-intro{
   background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--gold-2);
-  padding:20px 24px; margin-bottom:40px;
+  border-radius:0 var(--radius-sm) var(--radius-sm) 0; padding:20px 24px; margin-bottom:40px;
 }
 .cal-intro p{margin:0; color:var(--muted); font-size:15px}
 .cal-intro p + p{margin-top:9px}
