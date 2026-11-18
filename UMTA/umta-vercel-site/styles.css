@@ -386,12 +386,6 @@ footer.site{
 .cal-action .email{display:block; font-size:13px; color:var(--muted); margin-top:8px}
 .cal-action .email a{color:var(--navy); font-weight:700}
 
-.cal-intro{
-  background:var(--paper); border:1px solid var(--line); border-left:4px solid var(--gold-2);
-  border-radius:0 var(--radius-sm) var(--radius-sm) 0; padding:20px 24px; margin-bottom:40px;
-}
-.cal-intro p{margin:0; color:var(--muted); font-size:15px}
-.cal-intro p + p{margin-top:9px}
 
 @media (max-width: 1020px){
   .cal-item{grid-template-columns:170px minmax(0,1fr) 180px}
